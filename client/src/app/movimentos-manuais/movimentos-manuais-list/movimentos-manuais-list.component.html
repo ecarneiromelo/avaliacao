@@ -1,0 +1,29 @@
+<div class="content-section implementation">
+    <div class="card">
+        <h1>Movimento Manuais</h1>
+        <p-table [value]="products">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Mês</th>
+                    <th>Ano</th>
+                    <th>Código do Produto</th>
+                    <th>Descrição do Produto</th>
+                    <th>NR Lançamento</th>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr>
+                    <td>{{product.mes}}</td>
+                    <td>{{product.ano}}</td>
+                    <td>{{product.ano}}</td>
+                    <td>{{product.ano}}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

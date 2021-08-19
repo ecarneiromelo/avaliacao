@@ -1,0 +1,40 @@
+<div class="card">
+    <h5>Movimentos Manuais</h5>
+    <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col">
+            <label for="Mês">Mês</label>
+            <input id="mes" type="text" pInputText> 
+        </div>
+        <div class="p-field p-col">
+            <label for="ano">Ano</label>
+            <input id="ano" type="text" pInputText> 
+        </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col">
+            <label for="produto">Produto</label>
+            <p-dropdown inputId="produto" [(ngModel)]="selectedState" placeholder="Select" optionLabel="name"></p-dropdown>
+        </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col">
+            <label for="cosif">Cosif</label>
+            <p-dropdown inputId="cosif" [(ngModel)]="selectedState" placeholder="Select" optionLabel="name"></p-dropdown>
+        </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col">
+            <label for="valor">Valor:</label>
+            <input id="valor" type="text" pInputText> 
+        </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col">
+            <label for="descricao">Descrição</label>
+            <textarea id="descricao" type="text" rows="4" pInputTextarea></textarea>
+        </div>
+    </div>
+    <button pButton pRipple type="button" label="Limpar"></button>
+    <button pButton pRipple type="button" label="Novo"></button>
+    <button pButton pRipple type="button" label="Incluir"></button>
+</div>
