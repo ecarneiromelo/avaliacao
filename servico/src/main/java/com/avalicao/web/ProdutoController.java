@@ -1,39 +1,28 @@
 package com.avalicao.web;
 
-import com.avalicao.domain.MovimentoManual;
-import com.avalicao.domain.dto.MovimentoManualDTO;
-import com.avalicao.service.MovimentoManualService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.avalicao.domain.Produto;
+import com.avalicao.domain.dto.ProdutoDTO;
+import com.avalicao.service.ProdutoService;
+import com.avalicao.util.SelectItem;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
+@AllArgsConstructor
 @RestController
-@RequestMapping("/movimento-manual")
+@RequestMapping("/produto")
 public class ProdutoController {
 
-    @Autowired
-    private MovimentoManualService movimentoManualService;
+    private final ProdutoService produtoService;
 
-    @GetMapping("/movimentos-manuais")
-    public ResponseEntity<List<MovimentoManual>> list() {
-        return ResponseEntity.ok(this.movimentoManualService.findAll());
+    @GetMapping("")
+    public ResponseEntity<List<SelectItem>> listSelectItem() {
+        return ResponseEntity.ok(this.produtoService.findAllSeletItem());
     }
-
-    @GetMapping("/{datMes}/{datAno}/{numLancamento}")
-    public ResponseEntity<MovimentoManualDTO> buscar(Integer datMes, Integer datAno, Long numLancamento) {
-        return ResponseEntity.ok(this.movimentoManualService.buscar(datMes, datAno, numLancamento));
-    }
-
-    @PostMapping("")
-    public ResponseEntity<MovimentoManualDTO> buscar(@RequestBody MovimentoManualDTO movimentoManualDTO) {
-        return ResponseEntity.ok(this.movimentoManualService.salvar(movimentoManualDTO));
-    }
-
-
 }

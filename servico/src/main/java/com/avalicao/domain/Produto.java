@@ -1,14 +1,19 @@
 package com.avalicao.domain;
 
+import com.avalicao.util.SimNaoConverter;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +21,8 @@ import javax.persistence.Table;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Produto {
 
     @Id
@@ -25,7 +32,8 @@ public class Produto {
     @Column(name = "DES_PRODUTO")
     private String descricao;
 
+    @Convert(converter = SimNaoConverter.class)
     @Column(name = "STA_STATUS")
-    private String status;
+    private Boolean status;
 
 }

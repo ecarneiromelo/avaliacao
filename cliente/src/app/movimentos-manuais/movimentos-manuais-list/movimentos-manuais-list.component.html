@@ -1,0 +1,33 @@
+<div class="content-section implementation">
+    <div class="card">
+        <p-table [value]="lstMovimentoManual">
+            <ng-template pTemplate="caption">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                    <h5 class="p-m-0">Movimento Manuais</h5>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Mês</th>
+                    <th>Ano</th>
+                    <th>Código do Produto</th>
+                    <th>Descrição do Produto</th>
+                    <th>NR Lançamento</th>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-movimentoManual>
+                <tr>
+                    <td>{{movimentoManual.datMes}}</td>
+                    <td>{{movimentoManual.datAno}}</td>
+                    <td>{{movimentoManual.produto.id}}</td>
+                    <td>{{movimentoManual.produto.descricao}}</td>
+                    <td>{{movimentoManual.numLancamento}}</td>
+                    <td>{{movimentoManual.descricao}}</td>
+                    <td>{{movimentoManual.valor}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

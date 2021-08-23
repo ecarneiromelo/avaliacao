@@ -1,0 +1,56 @@
+<div class="ui-g ui-fluid">
+    <div class="ui-g-12 ui-lg-12">
+      <div class="card card-w-title">
+        <p-messages></p-messages>
+        <form [formGroup]="resourceForm">
+          <p-fieldset id="panelCadastro" legend="Movimento Manual">
+            <div class="card">
+                <h5>Movimentos Manuais</h5>
+                <div class="p-fluid p-formgrid p-grid">  
+                    <div class="p-field p-col">
+                        <span class="p-float-label">
+                            <input id="mes" type="number" pInputText formControlName="mes"  name="mes" min="1" max="12"> 
+                            <label for="float-input">Mês</label>
+                        </span>
+                    </div>
+                    <div class="p-field p-col">
+                        <span class="p-float-label">
+                            <input id="ano" type="number" pInputText formControlName="ano"  name="Ano" min="1" max="9999" > 
+                            <label for="float-input">Ano</label>
+                        </span>
+                    </div>
+                </div>
+                <div class="p-fluid p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="produto">Produto</label>
+                        <p-dropdown inputId="produto" [options]="selectedProduto" formControlName="idProduto" placeholder="Selecione um Produto" ></p-dropdown>
+                    </div>
+                </div>
+                <div class="p-fluid p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="cosif">Cosif</label>
+                        <p-dropdown inputId="cosif" [options]="selectedCosif" formControlName="idCosif" placeholder="Selecione um Cosif" ></p-dropdown>
+                    </div>
+                </div>
+                <div class="p-fluid p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="valor">Valor:</label>
+                        <input name="novoValor" type="text" autocomplete="off" pInputText formControlName="valor"  maxlength="100" currencyMask />
+
+                    </div>
+                </div>
+                <div class="p-fluid p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label for="descricao">Descrição</label>
+                        <textarea id="descricao" type="text" rows="4" pInputTextarea formControlName="descricao" ></textarea>
+                    </div>
+                </div>
+                <button pButton pRipple type="button" label="Limpar" (click)="limpar()"></button>
+                <button pButton pRipple type="button" label="Novo" ></button>
+                <button pButton pRipple type="button" label="Incluir" (click)="salvar()"></button>
+            </div>
+          </p-fieldset>
+        </form>
+      </div>
+    </div>
+</div>
