@@ -1,11 +1,13 @@
 package com.avalicao.domain;
 
+import com.avalicao.util.SimNaoConverter;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -30,5 +32,9 @@ public class ProdutoCosif {
     @ManyToOne
     @JoinColumn(name = "COD_PRODUTO")
     private Produto produto;
+
+    @Convert(converter = SimNaoConverter.class)
+    @Column(name = "STA_STATUS")
+    private Boolean status;
 
 }

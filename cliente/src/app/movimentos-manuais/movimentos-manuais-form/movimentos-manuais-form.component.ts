@@ -1,4 +1,5 @@
 
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Message, MessageService, SelectItem } from 'primeng/api';
@@ -6,6 +7,7 @@ import { MovimentoManual } from 'src/app/model/movimento-manual';
 import { CosifService } from 'src/app/service/cosif.service';
 import { MovimentosManuaisService } from 'src/app/service/movimentos-manuais.service';
 import { ProdutoService } from 'src/app/service/produto.service';
+import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-movimentos-manuais-form',
@@ -14,9 +16,8 @@ import { ProdutoService } from 'src/app/service/produto.service';
 })
 export class MovimentosManuaisFormComponent implements OnInit {
 
-  // cosifService:CosifService;
-  // produtoService: ProdutoService;
-  // movimentoManualService: MovimentosManuaisService;
+  @Output() notifyParent: EventEmitter<any> = new EventEmitter();
+
   resourceForm: FormGroup;
   selectedProduto: SelectItem[];
   selectedCosif: SelectItem[];
@@ -72,7 +73,7 @@ export class MovimentosManuaisFormComponent implements OnInit {
 
   async buscarCosif(produto: string){
     this.cosifService.findAll(produto)
-      .then(value => this.selectedCosif = this.toSelectItem('value',(item) => item['label'], value));
+      .then(value => this.selectedCosif = this.toSelectItem('value',(item) => item['value'] +' - ' +item['label'], value));
   }
 
   toSelectItem(valueProp: string, getLabel: (item: any) => string, array: any[]) {
@@ -87,8 +88,8 @@ export class MovimentosManuaisFormComponent implements OnInit {
   
 
   private async salvarConteudo() {
-
     await this.movimentoManualService.save(this.getConteudoDTO()).toPromise();
+    this.notifyParent.emit();
   }
 
   private getConteudoDTO(): MovimentoManual {
@@ -134,6 +135,7 @@ export class MovimentosManuaisFormComponent implements OnInit {
   }
 
   public limpar(){
+    this.selectedCosif=[];
     this.createMovimentoManualForm();
   } 
 

@@ -35,19 +35,20 @@
                 <div class="p-fluid p-formgrid p-grid">
                     <div class="p-field p-col">
                         <label for="valor">Valor:</label>
-                        <input name="novoValor" type="text" autocomplete="off" pInputText formControlName="valor"  maxlength="100" currencyMask />
+                        <input name="novoValor" autocomplete="off" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" currencyMask pInputText formControlName="valor"  maxlength="100" currencyMask />
 
                     </div>
                 </div>
                 <div class="p-fluid p-formgrid p-grid">
                     <div class="p-field p-col">
                         <label for="descricao">Descrição</label>
-                        <textarea id="descricao" type="text" rows="4" pInputTextarea formControlName="descricao" ></textarea>
+                        <textarea id="descricao" type="text" rows="4" pInputTextarea formControlName="descricao" maxlength="50" ></textarea>
                     </div>
                 </div>
-                <button pButton pRipple type="button" label="Limpar" (click)="limpar()"></button>
-                <button pButton pRipple type="button" label="Novo" ></button>
-                <button pButton pRipple type="button" label="Incluir" (click)="salvar()"></button>
+                <div class="ui-g-6 ui-lg-2">
+                    <button pButton pRipple type="button" style="margin: 5px" label="Limpar" (click)="limpar()"></button>
+                    <button pButton pRipple type="button" style="margin: 5px" label="Incluir" (click)="salvar()"></button>
+                </div>
             </div>
           </p-fieldset>
         </form>

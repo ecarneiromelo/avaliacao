@@ -18,6 +18,8 @@ import { ConfirmationService } from 'primeng/api';
 import { AppComponent } from './app.component';
 import { MovimentosManuaisModule } from './movimentos-manuais/movimentos-manuais.module';
 
+import { CurrencyMaskModule } from "ng2-currency-mask";
+
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { MovimentosManuaisModule } from './movimentos-manuais/movimentos-manuais
       InputTextareaModule,
       RadioButtonModule,
       ButtonModule,
-      MovimentosManuaisModule
+      MovimentosManuaisModule,
+      CurrencyMaskModule
   ],
   providers: [ConfirmationService],
   bootstrap: [AppComponent]

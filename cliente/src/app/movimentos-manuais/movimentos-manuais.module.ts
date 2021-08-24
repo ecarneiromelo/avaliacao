@@ -19,12 +19,15 @@ import {FieldsetModule} from 'primeng/fieldset';
 import {InputMaskModule} from 'primeng/inputmask';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { MovimentosManuaisComponent } from './movimentos-manuais.component';
 
 @NgModule({
   declarations: [
     MovimentosManuaisListComponent,
-    MovimentosManuaisFormComponent
-  ],
+    MovimentosManuaisFormComponent,
+    MovimentosManuaisComponent,
+      ],
   imports: [
     CommonModule,
     TableModule,
@@ -58,10 +61,12 @@ import {MessageModule} from 'primeng/message';
     InputMaskModule,
     MessagesModule,
     MessageModule,
+    CurrencyMaskModule,
     
   ], exports: [
     MovimentosManuaisListComponent,
-    MovimentosManuaisFormComponent
+    MovimentosManuaisFormComponent,
+    MovimentosManuaisComponent,
   ]
 })
 export class MovimentosManuaisModule {
